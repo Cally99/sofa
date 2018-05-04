@@ -47,10 +47,10 @@ class Game:
 
 
     def __repr__(self):
-        return '*%s\n%s* Счёт: %s-%s\n Фаворит: %s\n%s' % (self._tournament, self._title, self._first_score, self._second_score, self._fav)
+        return '*%s\n%s* Счёт: %s-%s\n Фаворит: %s\n' % (self._tournament, self._title, self._first_score, self._second_score, self._fav)
 
     def __str__(self):
-        return '*%s\n%s* Счёт: %s-%s\n Фаворит: %s\n%s' % (self._tournament, self._title, self._first_score, self._second_score, self._fav)
+        return '*%s\n%s* Счёт: %s-%s\n Фаворит: %s\n' % (self._tournament, self._title, self._first_score, self._second_score, self._fav)
 
     def get_id(self):
         return self._id

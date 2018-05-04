@@ -9,7 +9,6 @@ TARGET_SEQUENCES = [
                     [['1-0', 0, 1], ['2-0', 1, 1]],
                     [['0-1', 0, 2], ['0-2', 1, 2]],
                     # 2-1, 1-2
-                    [['0-1', 1, 2], ['0-2', 0, 2], ['1-2', 0, 2]],
                     [['1-0', 0, 1], ['1-1', 0, 1], ['1-2', 1, 1]],
                     [['0-1', 0, 2], ['1-1', 0, 2], ['2-1', 1, 2]],
                     # 3-1, 1-3
@@ -48,10 +47,10 @@ class Game:
 
 
     def __repr__(self):
-        return '*%s\n%s* Счёт: %s-%s\n Фаворит: %s\n' % (self._tournament, self._title, self._first_score, self._second_score, self._fav)
+        return '*%s\n%s*\nСчёт: %s-%s\nФаворит: %s\n' % (self._tournament, self._title, self._first_score, self._second_score, self._fav)
 
     def __str__(self):
-        return '*%s\n%s* Счёт: %s-%s\n Фаворит: %s\n' % (self._tournament, self._title, self._first_score, self._second_score, self._fav)
+        return '*%s\n%s*\nСчёт: %s-%s\nФаворит: %s\n' % (self._tournament, self._title, self._first_score, self._second_score, self._fav)
 
     def get_id(self):
         return self._id

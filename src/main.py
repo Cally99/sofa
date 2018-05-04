@@ -11,7 +11,7 @@ if __name__=='__main__':
         for g in target_games:
             if g.get_id() not in sended:
                 print(colored('Sending %s' % g, 'green'))
-                os.system('python3 send_to_channel.py %s' % g)
+                os.system('python3 send_to_channel.py "%s"' % g)
                 sended.append(g.get_id())
             
 

@@ -1,0 +1,2 @@
+[04.05.2018 12:01:41] send_to_channel.py:14 ERROR - Exception of type ConnectionError in send_new_fight(): HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot581713419:AAFo2fijVOtEMDqJphKV74AbRTRrePIHY7U/sendMessage?chat_id=-1001336404624&text=Hi&parse_mode=Markdown (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x10f6d8390>: Failed to establish a new connection: [Errno 65] No route to host',))
+[04.05.2018 12:01:41] send_to_channel.py:16 INFO - Finished sending.

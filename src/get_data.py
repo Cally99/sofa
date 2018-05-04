@@ -2,28 +2,37 @@ import json
 import requests
 from Game import Game
 
-url = 'https://www.sofascore.com/tennis/livescore/json'
 
-response = json.loads(requests.get(url).text)
+DICT_OF_SCORES = [ [1, 0], [0, 1],
+                   [2, 0], [0, 2],
+                   [2, 1], [1, 2],
+                   [3, 1], [1, 3]
+                 ]
 
-tournaments = response.get('sportItem').get('tournaments')
+def get_target_games():
+    url = 'https://www.sofascore.com/tennis/livescore/json'
+    response = json.loads(requests.get(url).text)
+    tournaments = response.get('sportItem').get('tournaments')
 
-itf_tournaments = list(
-        filter(lambda t: 'ITF' in t.get('category').get('name'), tournaments)
-                     )
-itf_ids = []
-for t in itf_tournaments:
-    events = t.get('events')
-    for e in events:
-        if e.get('statusDescription') == '1. set':
-            itf_ids.append(e.get('id'))
+    itf_tournaments = list(filter(lambda t: 'ITF' in t.get('category').get('name'), tournaments))
 
-print(itf_ids)
-
-games = []
-for id in itf_ids:
-    new_game = Game(id)
-    print(new_game)
-    games.append(new_game)
-
-# print(games)
+    itf_ids = []
+    for t in itf_tournaments:
+        events = t.get('events')
+        for e in events:
+            if e.get('statusDescription') == '1. set':
+                id = e.get('id')
+                home_score = e.get('homeScore').get('period1')
+                away_score = e.get('awayScore').get('period1')
+                if [home_score, away_score] in DICT_OF_SCORES:
+                    itf_ids.append([id, home_score, away_score])
+    
+    print(itf_ids)
+    
+    target_games = []
+    for g in itf_ids:
+        new_game = Game(g[0], g[1], g[2])
+        if new_game.is_target_game():
+            target_games.append(new_game)
+    
+    return target_games

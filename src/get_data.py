@@ -20,7 +20,7 @@ def get_target_games():
     for t in itf_tournaments:
         events = t.get('events')
         for e in events:
-            if e.get('statusDescription') == '1. set':
+            if e.get('statusDescription') == '1. set' and '/' not in e.get('name'):
                 id = e.get('id')
                 home_score = e.get('homeScore').get('period1')
                 away_score = e.get('awayScore').get('period1')

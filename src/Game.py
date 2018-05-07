@@ -26,6 +26,7 @@ class Game:
         self._title = self._info.get('event').get('name')
         self._tournament = self._info.get('event').get('tournament').get('name')
         print(self._tournament)
+        self._history = []
         self._fav = 1 if self._info.get('vote').get('vote1') > self._info.get('vote').get('vote2') else 2
         try:
             point_by_point = self._info.get('pointByPoint')[0]
@@ -34,8 +35,6 @@ class Game:
         else:
             self._hist_points = list(filter(None.__ne__, [g.get('score') for g in point_by_point.get('games')][::-1]))
             # print(self._hist_points)
-
-            self._history = []
             for p in self._hist_points:
                 is_break = p.get('serving') != p.get('scoring')
                 self._history.append(['%s-%s' % (p.get('homeScore'), p.get('awayScore')),

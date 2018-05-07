@@ -17,7 +17,7 @@ if __name__=='__main__':
                     sended.append(g.get_id())
         else:
             print('No games...')
-            time.sleep(30)
+            time.sleep(5)
         
             
 

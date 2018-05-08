@@ -25,7 +25,6 @@ class Game:
         self._info = json.loads(requests.get(url).text)
         self._title = self._info.get('event').get('name')
         self._tournament = self._info.get('event').get('tournament').get('name')
-        print(self._tournament)
         self._history = []
         self._fav = 1 if self._info.get('vote').get('vote1') > self._info.get('vote').get('vote2') else 2
         try:
@@ -39,6 +38,8 @@ class Game:
                 is_break = p.get('serving') != p.get('scoring')
                 self._history.append(['%s-%s' % (p.get('homeScore'), p.get('awayScore')),
                                      int(is_break), self._fav])
+            print(self._tournament)
+            print(self._title)
             print('History: %s ' % self._history)
             print(self.is_target_game()) 
             print()

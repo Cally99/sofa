@@ -57,6 +57,12 @@ class Game:
     def get_id(self):
         return self._id
 
+    def get_history(self):
+        return self._history
+
+    def get_title(self):
+        return self._title
+
     def is_target_game(self):
         return self._history in TARGET_SEQUENCES
 

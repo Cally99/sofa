@@ -3,6 +3,8 @@ import requests
 from Game import Game
 
 
+watched = []
+
 DICT_OF_SCORES = [ [1, 0], [0, 1],
                    [2, 0], [0, 2],
                    [2, 1], [1, 2],
@@ -32,6 +34,11 @@ def get_target_games():
     target_games = []
     for g in itf_ids:
         new_game = Game(g[0], g[1], g[2])
+        game_str = '%s %s\n' % (new_game.get_title(), new_game.get_history())
+        if game_str not in watched:
+            with open('hist.txt', 'a') as f:
+                f.write(game_str)
+                watched.append(game_str)
         if new_game.is_target_game():
             target_games.append(new_game)
     

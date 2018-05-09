@@ -1,6 +1,0 @@
-Renard L. - Urbanija M. [['0-1', 1, 2], ['1-1', 1, 2], ['2-1', 0, 2]]
-Bocchi L. - Parker J. [['1-0', 1, 1], ['2-0', 0, 1]]
-Giacomini L. - Ayap S. [['1-0', 0, 1]]
-Nepliy E. - Alhussein Abdel Aziz L. [['0-1', 1, 2]]
-Berlin S. - Jones F. [['0-1', 1, 2], ['0-2', 0, 2], ['0-3', 1, 2], ['1-3', 1, 2]]
-Bouzková M. - Cabeza-Candela E. [['1-0', 1, 1], ['2-0', 0, 1], ['3-0', 1, 1], ['3-1', 1, 1]]

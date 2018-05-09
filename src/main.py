@@ -7,7 +7,6 @@ from get_data import get_target_games
 
 if __name__=='__main__':
     sended = deque(maxlen=20)
-    watched = []
     while True:
         target_games = get_target_games()
         if target_games:

@@ -23,6 +23,8 @@ class Game:
         self._second_score = second_score
         url = 'https://www.sofascore.com/event/%s/json' % self._id
         self._info = json.loads(requests.get(url).text)
+        self._first_score = self._info.get('event').get('homeScore').get('period1')
+        self._second_score = self._info.get('event').get('awayScore').get('period1')
         self._title = self._info.get('event').get('name')
         self._tournament = self._info.get('event').get('tournament').get('name')
         self._history = []

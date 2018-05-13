@@ -6,8 +6,11 @@ from termcolor import colored
 from get_data import get_target_games
 
 if __name__=='__main__':
-    sended = deque(maxlen=20)
+    sended = deque(maxlen=30)
     while True:
+        """
+        Finding games with breaks
+        """
         target_games = get_target_games()
         if target_games:
             for g in target_games:

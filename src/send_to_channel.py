@@ -1,9 +1,10 @@
+import os
 import logging
 import telebot
 import time
 import sys
 
-BOT_TOKEN = '581713419:AAFo2fijVOtEMDqJphKV74AbRTRrePIHY7U'
+BOT_TOKEN = os.environ.get('TOKEN')
 CHANNEL_ID = -1001336404624
 bot = telebot.TeleBot(BOT_TOKEN)
 

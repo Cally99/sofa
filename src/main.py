@@ -11,7 +11,12 @@ if __name__=='__main__':
         """
         Finding games with breaks
         """
-        target_games = get_target_games()
+        try:
+            target_games = get_target_games()
+        except Exception as e:
+            print('Connection aborted.')
+            time.sleep(5)
+            continue
         if target_games:
             for g in target_games:
                 if g.get_id() not in sended:

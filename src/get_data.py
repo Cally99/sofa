@@ -14,7 +14,7 @@ DICT_OF_SCORES = [ [1, 0], [0, 1],
 
 def get_target_games():
     url = 'https://www.sofascore.com/tennis/livescore/json'
-    response = json.loads(requests.get(url).text)
+    response = json.loads(requests.get(url, timeout=10).text)
     tournaments = response.get('sportItem').get('tournaments')
 
     itf_tournaments = list(filter(lambda t: 'ITF' in t.get('category').get('name'), tournaments))

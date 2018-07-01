@@ -37,8 +37,6 @@ def get_target_games():
         new_game = Game(g[0], g[1], g[2])
         game_str = '%s %s\n' % (new_game.get_title(), new_game.get_history())
         if game_str not in watched:
-            with open('hist.txt', 'a') as f:
-                f.write(game_str)
                 watched.append(game_str)
         if new_game.is_target_game():
             target_games.append(new_game)

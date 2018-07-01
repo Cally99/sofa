@@ -18,13 +18,13 @@ if __name__=='__main__':
             time.sleep(5)
             continue
         if target_games:
+            print(f"Finds {len(target_games)} games")
             for g in target_games:
                 if g.get_id() not in sended:
                     print(colored('Sending %s' % g, 'green'))
                     os.system('python3 send_to_channel.py "%s"' % g)
                     sended.append(g.get_id())
         else:
-            print('No games...')
             time.sleep(5)
         
             

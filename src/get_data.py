@@ -34,7 +34,9 @@ def get_target_games():
     
     target_games = []
     for g in itf_ids:
+        print("I'm in.")
         new_game = Game(g[0], g[1], g[2])
+        print("I'm here.")
         game_str = '%s %s\n' % (new_game.get_title(), new_game.get_history())
         if game_str not in watched:
                 watched.append(game_str)

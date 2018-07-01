@@ -14,7 +14,7 @@ if __name__=='__main__':
         try:
             target_games = get_target_games()
         except Exception as e:
-            print('Connection aborted.')
+            print(e)
             time.sleep(5)
             continue
         if target_games:

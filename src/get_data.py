@@ -7,7 +7,8 @@ from Game import Game
 
 watched = []
 
-DICT_OF_SCORES = [ [1, 0], [0, 1],
+DICT_OF_SCORES = [
+                   [1, 0], [0, 1],
                    [2, 0], [0, 2],
                    [2, 1], [1, 2],
                    [3, 1], [1, 3]
@@ -16,7 +17,11 @@ DICT_OF_SCORES = [ [1, 0], [0, 1],
 def get_target_games():
     url = 'https://www.sofascore.com/tennis/livescore/json'
     response = json.loads(requests.get(url, timeout=10).text)
-    tournaments = response.get('sportItem').get('tournaments')
+    try:
+        tournaments = response.get('sportItem').get('tournaments')
+    except Exception as e:
+        print('No live games')
+        return []
 
     itf_tournaments = list(filter(lambda t: 'ITF' in t.get('category').get('name'), tournaments))
 

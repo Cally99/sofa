@@ -28,13 +28,22 @@ def get_target_games():
     itf_ids = []
     for t in itf_tournaments:
         events = t.get('events')
+        season = t.get('season').get('name')
+        # Checks that not womens
+        if 'Women' in season:
+            continue
+
         for e in events:
             if e.get('statusDescription') == '1. set' and '/' not in e.get('name'):
                 id = e.get('id')
                 home_score = e.get('homeScore').get('period1')
                 away_score = e.get('awayScore').get('period1')
+                current_home_score = e.get('homeScore').get('point', 0)
+                current_away_score = e.get('awayScore').get('point', 0)
+                print(current_home_score)
+                print(current_away_score)
                 if [home_score, away_score] in DICT_OF_SCORES:
-                    itf_ids.append([id, home_score, away_score])
+                    itf_ids.append([id, home_score, away_score, current_home_score, current_away_score])
     
     print(itf_ids)
     

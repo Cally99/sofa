@@ -17,7 +17,7 @@ TARGET_SEQUENCES = [
                     ]
 
 class Game:
-    def __init__(self, id, first_score, second_score):
+    def __init__(self, id, first_score, second_score, current_first_score, current_away_score):
         self._id = id
         self._first_score = first_score
         self._second_score = second_score
@@ -25,6 +25,8 @@ class Game:
         self._info = json.loads(requests.get(url, timeout=10).text)
         self._first_score = self._info.get('event').get('homeScore').get('period1')
         self._second_score = self._info.get('event').get('awayScore').get('period1')
+        self._first_point = current_first_score
+        self._second_point = current_away_score
         self._title = self._info.get('event').get('name')
         self._tournament = self._info.get('event').get('tournament').get('name')
         self._history = []
@@ -49,10 +51,10 @@ class Game:
 
 
     def __repr__(self):
-        return '*%s\n%s*\nСчёт: %s-%s\nФаворит: %s\n' % (self._tournament, self._title, self._first_score, self._second_score, self._fav)
+        return '*%s\n%s*\nСчёт: %s-%s\nФаворит: %s\n%s-%s' % (self._tournament, self._title, self._first_score, self._second_score, self._fav, self._first_point, self._second_point)
 
     def __str__(self):
-        return '*%s\n%s*\nСчёт: %s-%s\nФаворит: %s\n' % (self._tournament, self._title, self._first_score, self._second_score, self._fav)
+        return '*%s\n%s*\nСчёт: %s-%s\nФаворит: %s\n%s-%s' % (self._tournament, self._title, self._first_score, self._second_score, self._fav, self._first_point, self._second_point)
 
     def get_id(self):
         return self._id

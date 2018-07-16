@@ -23,14 +23,13 @@ def get_target_games():
         print('No live games')
         return []
 
-    itf_tournaments = list(filter(lambda t: 'ITF' in t.get('category').get('name'), tournaments))
 
-    itf_ids = []
-    for t in itf_tournaments:
+    ids = []
+    for t in tournaments:
         events = t.get('events')
         season = t.get('season').get('name')
-        # Checks that not womens
-        if 'Women' in season:
+        # Checks that not womens and not wimbledon
+        if 'imbledon' in season or 'Women' in season:
             continue
 
         for e in events:
@@ -41,12 +40,12 @@ def get_target_games():
                 current_home_score = e.get('homeScore').get('point', 0)
                 current_away_score = e.get('awayScore').get('point', 0)
                 if [home_score, away_score] in DICT_OF_SCORES:
-                    itf_ids.append([id, home_score, away_score, current_home_score, current_away_score])
+                    ids.append([id, home_score, away_score, current_home_score, current_away_score])
     
-    print(itf_ids)
+    print(ids)
     
     target_games = []
-    for g in itf_ids:
+    for g in ids:
         try:
             with timeout(10):
                 new_game = Game(g[0], g[1], g[2], g[3], g[4])

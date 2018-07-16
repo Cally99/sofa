@@ -51,7 +51,7 @@ def get_target_games():
     for g in itf_ids:
         try:
             with timeout(10):
-                new_game = Game(g[0], g[1], g[2])
+                new_game = Game(g[0], g[1], g[2], g[3], g[4])
         except Exception as e:
             print('Timeout exception.')
             continue

@@ -40,8 +40,6 @@ def get_target_games():
                 away_score = e.get('awayScore').get('period1')
                 current_home_score = e.get('homeScore').get('point', 0)
                 current_away_score = e.get('awayScore').get('point', 0)
-                print(current_home_score)
-                print(current_away_score)
                 if [home_score, away_score] in DICT_OF_SCORES:
                     itf_ids.append([id, home_score, away_score, current_home_score, current_away_score])
     
